@@ -14,7 +14,7 @@ class TestPlant:
     def test_plants_get_route_returns_list_of_plant_objects(self):
         '''returns JSON representing Plant objects at "/plants".'''
         with app.app_context():
-            p = Plant(name="Douglas Fir")
+            p = Plant(name="Douglas Fir", image="douglas_fir.jpg", price=25.50)
             db.session.add(p)
             db.session.commit()
 
@@ -34,6 +34,8 @@ class TestPlant:
         response = app.test_client().post(
             '/plants',
             json = {
+                
+                
                 "name": "Live Oak",
                 "image": "https://www.nwf.org/-/media/NEW-WEBSITE/Shared-Folder/Wildlife/Plants-and-Fungi/plant_southern-live-oak_600x300.ashx",
                 "price": 250.00,
